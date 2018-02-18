@@ -1,0 +1,20 @@
+<div class="wrapper">
+    <div *ngIf="isLoggedIn$ | async">
+        <my-sidebar></my-sidebar>
+    </div>
+    <div [ngClass]="(isLoggedIn$ | async)? 'main-panel' : ''">
+        <div *ngIf="isLoggedIn$ | async">
+            <my-header></my-header>
+        </div>
+        <div class="content">
+            <div class="container-fluid">
+                <my-alert></my-alert>
+               <!-- value: {{ isLoggedIn$ | async | json}} -->
+                <router-outlet></router-outlet>
+            </div>
+        </div>
+        <div *ngIf="isLoggedIn$ | async">
+            <my-footer></my-footer>
+        </div>
+    </div>
+</div>

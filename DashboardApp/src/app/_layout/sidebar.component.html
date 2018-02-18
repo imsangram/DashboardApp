@@ -1,0 +1,42 @@
+﻿<div class="sidebar" data-background-color="white" data-active-color="danger">
+
+    <!--
+        Tip 1: you can change the color of the sidebar's background using: data-background-color="white | black"
+        Tip 2: you can change the color of the active button using the data-active-color="primary | info | success | warning | danger"
+    -->
+
+    <div class="sidebar-wrapper">
+        <div class="logo">
+            <a href="http://www.googlecom" class="simple-text">
+                Dashboard App
+            </a>
+        </div>
+
+        <ul class="nav">
+            <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+                <a routerLink="/home">
+                    <i class="ti-panel"></i>
+                    <p>Home</p>
+                </a>
+            </li>
+            <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+                <a routerLink="/dashboard">
+                    <i class="ti-panel"></i>
+                    <p>Dashboard</p>
+                </a>
+            </li>
+            <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+                <a routerLink="/searchusers">
+                    <i class="ti-panel"></i>
+                    <p>Search users</p>
+                </a>
+            </li>
+            <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+                    <a routerLink="/adduser">
+                        <i class="ti-panel"></i>
+                        <p>Add user</p>
+                    </a>
+            </li>
+        </ul>
+    </div>
+</div>

@@ -1,0 +1,85 @@
+<div class="row">
+        <div class="col-lg-8 col-md-6">
+            <div class="form-group">
+                <label>Type name of the users:</label>
+                <input class="form-control border-input" type="text" placeholder="search users here.." [(ngModel)]="txtSearch" (ngModelChange)="instantSearch($event)" />
+            </div>
+        </div>
+    </div>
+<br/>
+<div class="row">
+    <div class="col-lg-10 col-md-8">
+        <div class="card" *ngIf="users?.length > 0; else dataNotFound">
+            <div class="header">
+                <h4 class="title">Team Members</h4>
+            </div>
+            <div class="content" >
+                <ul class="list-unstyled team-members" *ngFor="let user of users">
+                            <li>
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        <div class="avatar">
+                                            <img alt="Circle Image" class="img-circle img-no-padding img-responsive" [src]="user.avatar_url+ '&amp;s=48'" height="48" width="48">
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-6">
+                                        {{user.login}}
+                                        <br>
+                                        <span class="text-muted"><small>{{user.score}}</small></span>
+                                    </div>
+
+                                    <div class="col-xs-3 text-right">
+                                        <a class="btn btn-sm btn-success btn-icon" [href]="'user/'+ user.login" target="_blank"><i class="fa fa-github"></i></a>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+            </div>
+        </div>
+        <ng-template #dataNotFound>
+            data not found
+        </ng-template>
+    </div>
+</div>
+<button type="button" (click)="modal1.show()">test</button>
+<app-modal #modal1>
+    <div class="app-modal-header">
+      header
+    </div>
+    <div class="app-modal-body">
+      Whatever content you like, form fields, anything<br/>
+      <input type="text">
+      Whatever content you like, form fields, anything<br/>
+      Whatever content you like, form fields, anything<br/>
+      Whatever content you like, form fields, anything<br/>
+      Whatever content you like, form fields, anything<br/>
+      Whatever content you like, form fields, anything<br/>
+      Whatever content you like, form fields, anything<br/>
+    </div>
+    <div class="app-modal-footer">
+      <button type="button" class="btn btn-default" (click)="modal1.hide()">Close</button>
+      <!--<button type="button" class="btn btn-default" (click)="modal2.show()">Show modal 2</button> -->
+      <button type="button" class="btn btn-primary">Save changes</button>
+    </div>
+  </app-modal>
+  <!-- items being paged -->
+  <div *ngFor="let item of pagedItems">{{item.name}}</div>
+  
+              <!-- pager -->
+              <ul *ngIf="pager.pages && pager.pages.length" class="pagination">
+                  <li [ngClass]="{disabled:pager.currentPage === 1}">
+                      <a (click)="setPage(1)">First</a>
+                  </li>
+                  <li [ngClass]="{disabled:pager.currentPage === 1}">
+                      <a (click)="setPage(pager.currentPage - 1)">Previous</a>
+                  </li>
+                  <li *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}">
+                      <a (click)="setPage(page)">{{page}}</a>
+                  </li>
+                  <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+                      <a (click)="setPage(pager.currentPage + 1)">Next</a>
+                  </li>
+                  <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+                      <a (click)="setPage(pager.totalPages)">Last</a>
+                  </li>
+              </ul>

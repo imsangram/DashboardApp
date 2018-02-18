@@ -1,0 +1,13 @@
+﻿<div class="col-md-6 col-md-offset-3">
+    <h3>Hi {{currentUser.firstName}}!</h3>
+    <p>Welcome ! Here's the list of active users</p>
+    <h3 >All registered users:</h3>
+    <ul>
+        <li *ngFor="let user of users">
+            {{user.username}} ({{user.firstName}} {{user.lastName}})
+            - <a (click)="deleteUser(user.id)">Delete</a>
+        </li>
+    </ul>
+    <p><a [routerLink]="['/login']">Logout</a></p>
+    <div Highlighter highlightColor="#82c544">directive testing</div>
+</div>
