@@ -8,15 +8,14 @@ import { FormGroup, FormControl, FormBuilder, NgForm } from '@angular/forms';
   styleUrls: ['./add-user.component.css']
 })
 export class AddUserComponent implements OnInit {
-  constructor(private alertService: AlertService) { 
+  constructor(private alertService: AlertService) {
   }
 
   ngOnInit() {
   }
- 
-  submitForm(myForm: NgForm){
-    debugger;
-    if(myForm.value.firstName == '' || myForm.value.lastName == ''){
+
+  submitForm(myForm: NgForm) {
+    if (myForm.value.firstName == '' || myForm.value.lastName == '') {
       this.alertService.error("please fill in firstname and lastname");
       return false;
     }

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Subject } from 'rxjs';
 import { Observable } from 'rxjs/Observable';
+import { Router, ActivatedRoute } from '@angular/router';
 import { SearchuserService } from '../../_services/searchuser.service';
 import { PagerService } from '../../_services/pager.service';
 
@@ -16,7 +17,7 @@ export class SearchUsersComponent {
   users: any[] = [];
   private _userSearchService: SearchuserService
   private _pagerService: PagerService
-  
+
   //default values
   perPage: number = 10;
   pageNumber: number = 1;
@@ -27,14 +28,18 @@ export class SearchUsersComponent {
   totalCount: number;
 
 
-  constructor(private userSearchService: SearchuserService, private pagerService: PagerService) {
+  constructor(
+    private userSearchService: SearchuserService,
+    private pagerService: PagerService,
+    private route: ActivatedRoute,
+    private router: Router) {
     this._userSearchService = userSearchService;
-    this.txtSearchChanged.
-      debounceTime(1200)
+    this.txtSearchChanged
+      .debounceTime(1200)
       .distinctUntilChanged()
       .subscribe(model => {
         //this.txtSearch = model;
-        this.getUsers(model,this.perPage,this.pageNumber);
+        this.getUsers(model, this.perPage, this.pageNumber);
         // console.log(this.txtQuery);
         this.setPage(this.pageNumber);
       });
@@ -47,7 +52,7 @@ export class SearchUsersComponent {
   getUsers(searchQuery: string, perPage: number, pageNumber: number) {
     this.users = [];
     this._userSearchService.search(searchQuery, perPage, pageNumber)
-    //.flatMap((data) => data.json()['items']).
+      //.flatMap((data) => data.json()['items']).
       .subscribe((data) => {
         this.totalCount = data.json()['total_count'];
         this.totalCount = 1000; // Adding this limit due to Github API limit which allows only first 100 data to be used
@@ -63,10 +68,13 @@ export class SearchUsersComponent {
     this.pager = this.pagerService.getPager(this.totalCount, page);
     // get current page of items
     this.pagedItems = this.users.slice(this.pager.startIndex, this.pager.endIndex + 1);
-    if(this.users.length > 0){
-      this.getUsers(this.txtSearch,this.perPage,this.pager.currentPage);
+    if (this.users.length > 0) {
+      this.getUsers(this.txtSearch, this.perPage, this.pager.currentPage);
     }
     //getUsers(1)
   }
 
+  openUserProfile(user) {
+    this.router.navigateByUrl('/user/' + user);
+  }
 }

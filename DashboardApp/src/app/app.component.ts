@@ -9,16 +9,13 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/mergeMap';
 
 @Component({
-  moduleId: module.id,
-  selector: 'my-app',
-  templateUrl: './app.component.html'
+    selector: 'my-app',
+    templateUrl: './app.component.html'
 })
 export class AppComponent implements OnInit {
-    isLoggedIn$: Observable<boolean>;  
+    isLoggedIn$: Observable<boolean>;
     ngOnInit(): void {
-
         this.isLoggedIn$ = this.authenticationService.isSignedIn;
-        debugger;
         this.router.events
             .filter((event) => event instanceof NavigationEnd)
             .map(() => this.activatedRoute)
@@ -31,7 +28,7 @@ export class AppComponent implements OnInit {
             .subscribe((event) => {
                 this.titleService.setTitle(event['title']);
             });
-        }
+    }
 
     isLoggedIn: boolean;
     constructor(
@@ -39,7 +36,7 @@ export class AppComponent implements OnInit {
         private router: Router,
         private activatedRoute: ActivatedRoute,
         private titleService: Title) {
-        
+
     }
 
 }

@@ -1,4 +1,4 @@
-﻿<div class="row">
+﻿<!-- <div class="row">
         <div class="col-lg-4 col-md-5 col-md-offset-3">
         <form name="form" (ngSubmit)="f.form.valid && login()" #f="ngForm" novalidate>
             <div class="card card-user">
@@ -50,3 +50,73 @@
         </form>
     </div>
     </div>
+     -->
+<div class="limiter">
+    <div class="container-login100">
+        <div class="wrap-login100">
+            <div class="login100-pic js-tilt" data-tilt>
+                <img src="assets/images/img-01.png" alt="IMG">
+            </div>
+
+            <form name="form" (ngSubmit)="f.form.valid && register()" #f="ngForm" novalidate
+                class="login100-form validate-form">
+                <span class="login100-form-title">
+                    Sign up
+                </span>
+                <div *ngIf="error" class="alert alert-danger" role="alert">
+                    {{ error }}
+                </div>
+                <div class="wrap-input100 validate-input" data-validate="Valid First Name is required"
+                    [ngClass]=" {'alert-validate':f.submitted && !firstName.valid }">
+                    <input class="input100" type="text" name="firstName" [(ngModel)]="model.firstName"
+                        #firstName="ngModel" required placeholder="First Name">
+                    <span class=" focus-input100"></span>
+                    <span class="symbol-input100">
+                        <i class="fa fa-user" aria-hidden="true"></i>
+                    </span>
+                </div>
+                <div class="wrap-input100 validate-input" data-validate="Valid Last Name is required"
+                    [ngClass]=" {'alert-validate':f.submitted && !lastName.valid }">
+                    <input class="input100" type="text" name="lastName" [(ngModel)]="model.lastName" #lastName="ngModel"
+                        required placeholder="Last Name">
+                    <span class=" focus-input100"></span>
+                    <span class="symbol-input100">
+                        <i class="fa fa-user" aria-hidden="true"></i>
+                    </span>
+                </div>
+                <div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz"
+                    [ngClass]=" {'alert-validate':f.submitted && !email.valid }">
+                    <input class="input100" type="text" name="email" [(ngModel)]="model.email" #email="ngModel" required
+                        placeholder="Email">
+                    <span class=" focus-input100"></span>
+                    <span class="symbol-input100">
+                        <i class="fa fa-envelope" aria-hidden="true"></i>
+                    </span>
+                </div>
+
+                <div class="wrap-input100 validate-input" data-validate="Password is required"
+                    [ngClass]=" {'alert-validate':f.submitted && !password.valid }">
+                    <input class="input100" type="password" name="password" [(ngModel)]="model.password"
+                        #password="ngModel" required placeholder="Password">
+                    <span class="focus-input100"></span>
+                    <span class="symbol-input100">
+                        <i class="fa fa-lock" aria-hidden="true"></i>
+                    </span>
+                </div>
+
+                <div class="container-login100-form-btn">
+                    <button class="login100-form-btn" [disabled]="loading">
+                        Register
+                    </button>
+                </div>
+                <div class="container-login100-form-btn">
+                    <a [routerLink]="['/login']" class="login100-form-btn"
+                        style="background-color: #6c757d !important;">Cancel</a>
+                </div>
+
+                <img *ngIf="loading"
+                    src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+            </form>
+        </div>
+    </div>
+</div>

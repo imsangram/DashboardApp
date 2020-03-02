@@ -1,7 +1,38 @@
-﻿<div class="col-md-6 col-md-offset-3">
-    <h3>Hi {{currentUser.firstName}}!</h3>
+﻿<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="header">
+                <h4 class="title">Users</h4>
+                <p class="category">Here is a list of active users</p>
+            </div>
+            <div class="content table-responsive table-full-width">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Email</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let user of users;let i = index">
+                            <td>{{ i }}</td>
+                            <td>{{user.firstName}}</td>
+                            <td>{{user.lastName}}</td>
+                            <td>{{user.email}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
+<!-- <div class="col-md-6 col-md-offset-3">
+     <h3>Hi {{currentUser.firstName}}!</h3>
     <p>Welcome ! Here's the list of active users</p>
-    <h3 >All registered users:</h3>
+    <h3>All registered users:</h3>
     <ul>
         <li *ngFor="let user of users">
             {{user.username}} ({{user.firstName}} {{user.lastName}})
@@ -10,4 +41,4 @@
     </ul>
     <p><a [routerLink]="['/login']">Logout</a></p>
     <div Highlighter highlightColor="#82c544">directive testing</div>
-</div>
+</div> -->

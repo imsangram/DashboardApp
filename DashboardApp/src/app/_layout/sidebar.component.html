@@ -6,36 +6,40 @@
     -->
 
     <div class="sidebar-wrapper">
-        <div class="logo">
-            <a href="http://www.googlecom" class="simple-text">
-                Dashboard App
-            </a>
+        <div class="logo"><a class="simple-text logo-mini">
+                <div class="logo-img"><img src="./assets/img/angular.png"></div>
+            </a><a href="/" class="simple-text logo-normal"> work.com.au</a>
         </div>
-
         <ul class="nav">
             <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
                 <a routerLink="/home">
-                    <i class="ti-panel"></i>
+                    <i class="fa fa-home"></i>
                     <p>Home</p>
                 </a>
             </li>
             <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
                 <a routerLink="/dashboard">
-                    <i class="ti-panel"></i>
+                    <i class="fa fa-cogs"></i>
                     <p>Dashboard</p>
                 </a>
             </li>
             <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
                 <a routerLink="/searchusers">
-                    <i class="ti-panel"></i>
+                    <i class="fa fa-address-card"></i>
                     <p>Search users</p>
                 </a>
             </li>
             <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
-                    <a routerLink="/adduser">
-                        <i class="ti-panel"></i>
-                        <p>Add user</p>
-                    </a>
+                <a routerLink="/adduser">
+                    <i class="fa fa-user"></i>
+                    <p>Add user</p>
+                </a>
+            </li>
+            <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+                <a routerLink="/updateprofile">
+                    <i class="fa fa-user"></i>
+                    <p>Update Profile</p>
+                </a>
             </li>
         </ul>
     </div>

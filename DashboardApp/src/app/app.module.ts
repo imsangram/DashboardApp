@@ -5,8 +5,10 @@ import { AppRoutingModule } from "./app.routing";
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AuthGuard } from './_guards/index';
-import { HomeComponent, LoginComponent, RegisterComponent, DashboardComponent,
-  SearchUsersComponent, AddUserComponent} from './_forms/index';
+import {
+  HomeComponent, LoginComponent, RegisterComponent, DashboardComponent,
+  SearchUsersComponent, AddUserComponent, UpdateProfileComponent
+} from './_forms/index';
 import { ModalComponent } from './_shared/index';
 
 import { AppComponent } from './app.component';
@@ -30,12 +32,13 @@ import { UserProfileComponent } from './_forms/userprofile/userprofile.component
     AlertComponent,
     UserProfileComponent,
     AddUserComponent,
+    UpdateProfileComponent,
     ModalComponent
   ],
   imports: [
-    BrowserModule, FormsModule, AppRoutingModule, HttpModule, ReactiveFormsModule  
+    BrowserModule, FormsModule, AppRoutingModule, HttpModule, ReactiveFormsModule
   ],
-  providers: [AuthGuard,AppConfig, AuthenticationService, AlertService, UserService, SearchuserService, PagerService],
+  providers: [AuthGuard, AppConfig, AuthenticationService, AlertService, UserService, SearchuserService, PagerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

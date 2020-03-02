@@ -4,13 +4,14 @@ import { Router } from '@angular/router';
 import { AlertService, UserService } from '../../_services/index';
 
 @Component({
-    moduleId: module.id,
-    templateUrl: 'register.component.html'
+    templateUrl: 'register.component.html',
+    styleUrls: ['register.component.css']
 })
 
 export class RegisterComponent {
     model: any = {};
     loading = false;
+    error: string;
 
     constructor(
         private router: Router,
@@ -26,11 +27,12 @@ export class RegisterComponent {
                     this.router.navigate(['/login']);
                 },
                 error => {
-                    this.alertService.error(error._body);
+                    debugger;
+                    this.error = error._body;
                     this.loading = false;
                 });
     }
-    login(){
+    login() {
         return true;
     }
 }

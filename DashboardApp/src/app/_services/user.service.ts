@@ -9,19 +9,19 @@ export class UserService {
     constructor(private http: Http, private config: AppConfig) { }
 
     getAll() {
-        return this.http.get(this.config.apiUrl + '/users', this.jwt()).map((response: Response) => response.json());
+        return this.http.get(this.config.herokuApiUrl + '/users', this.jwt()).map((response: Response) => response.json());
     }
 
-    getById(id: number) {
-        return this.http.get(this.config.apiUrl + '/users/' + id, this.jwt()).map((response: Response) => response.json());
+    getById(id: string) {
+        return this.http.get(this.config.herokuApiUrl + '/users/' + id, this.jwt()).map((response: Response) => response.json());
     }
 
     create(user: User) {
-        return this.http.post(this.config.apiUrl + '/users/register/', user, this.jwt());
+        return this.http.post(this.config.herokuApiUrl + '/register', user);
     }
 
     update(user: User) {
-        return this.http.put(this.config.apiUrl + '/users/' + user.id, user, this.jwt());
+        return this.http.put(this.config.apiUrl + '/users/' + user._id, user, this.jwt());
     }
 
     delete(id: number) {
@@ -32,9 +32,9 @@ export class UserService {
 
     private jwt() {
         // create authorization header with jwt token
-        let currentUser = JSON.parse(localStorage.getItem('currentUser'));
-        if (currentUser && currentUser.token) {
-            let headers = new Headers({ 'Authorization': 'Bearer ' + currentUser.token });
+        let user = JSON.parse(localStorage.getItem('currentUser'));
+        if (user && user.token) {
+            let headers = new Headers({ 'Authorization': 'Bearer ' + user.token });
             return new RequestOptions({ headers: headers });
         }
     }

@@ -13,7 +13,6 @@ export class AuthenticationService {
     private signedIn = new BehaviorSubject<boolean>(false);
 
     constructor(private http: Http, private config: AppConfig) {
-        debugger;
         if (localStorage.getItem('currentUser')) {
             // logged in so return true
             this._isLoggedIn = true;
@@ -30,13 +29,13 @@ export class AuthenticationService {
     }
 
     login(username: string, password: string) {
-        debugger;
-        return this.http.post(this.config.apiUrl + '/users/authenticate', { username: username, password: password })
-        .map((response: Response) => {
+        return this.http.post(this.config.herokuApiUrl + '/login', { email: username, password: password })
+            .map((response: Response) => {
                 //login successful if there's a jwt token in the response
                 debugger;
-                let user = response.json();
-                if (user && user.token) {
+                let jwt_token = response.json();
+                var user = { user: null, token: jwt_token };
+                if (jwt_token) {
                     // store user details and jwt token in local storage to keep user logged in between page refreshes
                     localStorage.setItem('currentUser', JSON.stringify(user));
                     this.signedIn.next(true);
@@ -50,8 +49,8 @@ export class AuthenticationService {
         this.signedIn.next(false);
     }
 
-    setLogin(username: string){
-        localStorage.setItem('currentUser', JSON.stringify(username));
-        this.signedIn.next(true);
-    }
+    // setLogin(username: string) {
+    //     localStorage.setItem('currentUser', JSON.stringify(username));
+    //     this.signedIn.next(true);
+    // }
 }

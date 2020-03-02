@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Router, ActivatedRoute, Params} from '@angular/router';
+import { Router, ActivatedRoute, Params } from '@angular/router';
 import { SearchuserService } from '../../_services/searchuser.service';
 
 @Component({
@@ -13,9 +13,9 @@ export class UserProfileComponent implements OnInit {
   ngOnInit() {
     // subscribe to router event
     this.activatedRoute.params.subscribe((params: Params) => {
-        let name = params['username'];
-        this.currentUser = this.searchUserService.getUserInfo(name).subscribe(x=> { this.currentUser = x.json()});
-      });
+      let name = params['username'];
+      this.currentUser = this.searchUserService.getUserInfo(name).subscribe(x => { this.currentUser = x.json() });
+    });
   }
 
 }

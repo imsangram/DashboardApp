@@ -1,4 +1,4 @@
-﻿
+﻿<!-- 
 <div class="row">
     <div class="col-lg-4 col-md-5 col-md-offset-3">
     <form name="form" (ngSubmit)="f.form.valid && login()" #f="ngForm" novalidate>
@@ -17,7 +17,7 @@
                     </h4>
                 </div>
                 <div class=" description text-center">
-                        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !username.valid }">
+                <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !username.valid }">
                     <label for="username">Username</label>
                     <input type="text" class="form-control border-input" name="username" [(ngModel)]="model.username" #username="ngModel" required />
                     <div *ngIf="f.submitted && !username.valid" class="help-block">Username is required</div>
@@ -38,5 +38,69 @@
             <hr>
         </div>
     </form>
-</div>
+    div>
+</div> -->
+<div class="limiter">
+    <div class="container-login100">
+        <div class="wrap-login100">
+            <div class="login100-pic js-tilt" data-tilt>
+                <img src="assets/images/img-01.png" alt="IMG">
+            </div>
+
+            <form name="form" (ngSubmit)="f.form.valid && login()" #f="ngForm" novalidate
+                class="login100-form validate-form">
+                <span class="login100-form-title">
+                    Member Login
+                </span>
+                <div *ngIf="error" class="alert alert-danger" role="alert">
+                    {{ error }}
+                </div>
+                <div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz"
+                    [ngClass]=" {'alert-validate':f.submitted && !username.valid }">
+                    <input class="input100" type="text" name="username" [(ngModel)]="model.username" #username="ngModel"
+                        required placeholder="Email">
+                    <span class=" focus-input100"></span>
+                    <span class="symbol-input100">
+                        <i class="fa fa-envelope" aria-hidden="true"></i>
+                    </span>
+                </div>
+
+                <div class="wrap-input100 validate-input" data-validate="Password is required"
+                    [ngClass]=" {'alert-validate':f.submitted && !password.valid }">
+                    <input class="input100" type="password" name="password" [(ngModel)]="model.password"
+                        #password="ngModel" required placeholder="Password">
+                    <span class="focus-input100"></span>
+                    <span class="symbol-input100">
+                        <i class="fa fa-lock" aria-hidden="true"></i>
+                    </span>
+                </div>
+
+                <div class="container-login100-form-btn">
+                    <button class="login100-form-btn" [disabled]="loading">
+                        Login
+                    </button>
+                    <img *ngIf="loading" style="margin-top: 20px;"
+                        src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+                </div>
+
+                <!-- <div class="text-center p-t-12">
+                    <span class="txt1">
+                        Forgot
+                    </span>
+                    <a class="txt2" href="#">
+                        Username / Password?
+                    </a>
+                </div> -->
+                <div class="text-center p-t-136">
+                    <!-- <a class="txt2" href="#">
+                        Create your Account
+                        <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
+                    </a> -->
+                    <a [routerLink]="['/register']" class="btn btn-link">Create your Account
+                        <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
 </div>

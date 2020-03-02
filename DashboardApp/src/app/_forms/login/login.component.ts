@@ -4,14 +4,15 @@ import { AlertService, AuthenticationService } from '../../_services/index';
 
 
 @Component({
-    moduleId: module.id,
-    templateUrl: 'login.component.html'
+    templateUrl: 'login.component.html',
+    styleUrls: ['login.component.css']
 })
 
 export class LoginComponent implements OnInit {
     model: any = {};
     loading = false;
     returnUrl: string;
+    error: string;
 
     constructor(
         private route: ActivatedRoute,
@@ -36,8 +37,9 @@ export class LoginComponent implements OnInit {
                     this.router.navigateByUrl('/home');
                 },
                 error => {
-                    this.alertService.error('Username or password is incorrect');
+                    this.error = "Incorrect username or password";
+                    //this.alertService.error('Username or password is incorrect');
                     this.loading = false;
-                }); 
+                });
     }
 }

@@ -5,3 +5,4 @@ export * from './register/register.component';
 export * from './search-users/searchusers.component';
 export * from './userprofile/userprofile.component';
 export * from './add-user/add-user.component';
+export * from './update-profile/update-profile.component';
